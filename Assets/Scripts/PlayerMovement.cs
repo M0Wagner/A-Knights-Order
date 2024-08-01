@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
     private float wallJumpCooldown;
 
-    
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -43,9 +43,9 @@ public class PlayerMovement : MonoBehaviour
             // reduce gravity to slowly slide down wall
             if (isOnWall())
             {
-                body.gravityScale = 10;            
+                body.gravityScale = 8;
                 body.velocity = Vector2.zero;
-            } 
+            }
 
             // reset gravity to normal
             else
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
             // check if space is pressed
             if (Input.GetKey(KeyCode.Space))
                 Jump();
-        } 
+        }
         else
             wallJumpCooldown += Time.deltaTime;
     }
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         else if (isOnWall() && !isGrounded())
         {
             wallJumpCooldown = 0;
-            body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 15, 20);
+            body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x), 18);
         }
     }
 
