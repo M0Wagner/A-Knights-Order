@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,10 +10,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
+    
     private Rigidbody2D body;
     private Animator animator;
     private BoxCollider2D boxCollider;
     private float wallJumpCooldown;
+    private GameObject cam;
 
 
     private void Awake()
@@ -19,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        cam = GameObject.FindGameObjectWithTag("PlayerCam");
     }
 
     private void Update()
@@ -34,6 +39,14 @@ public class PlayerMovement : MonoBehaviour
         // set animator input
         animator.SetBool("isRunning", horizontalInput != 0);
         animator.SetBool("isGrounded", isGrounded());
+
+        // look 
+        if (Input.GetKey(KeyCode.W))
+            LookUp();
+
+        // dodge
+        if (Input.GetKey(KeyCode.LeftShift))
+            Dodge(horizontalInput);
 
         // wall jump logic
         if (wallJumpCooldown > 0.2f)
@@ -74,6 +87,19 @@ public class PlayerMovement : MonoBehaviour
             wallJumpCooldown = 0;
             body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x), 18);
         }
+    }
+
+    private void Dodge(float horizontalInput)
+    {
+        if (isGrounded())
+        {
+            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+            animator.SetTrigger("dodge");
+        }  
+    }
+
+    private void LookUp()
+    {cam.transform.Translate(0, 100, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
