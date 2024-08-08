@@ -11,6 +11,7 @@ public class enemyPatrol : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;  
     private Transform currentPoint;
+    [SerializeField] public float damage;
 
     // Start is called before the first frame update
     void Start()
@@ -50,5 +51,13 @@ public class enemyPatrol : MonoBehaviour
     {
         Gizmos.DrawWireSphere(pointA.transform.position, 0.5f);
         Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            collision.GetComponent<Health>().TakeDamage(damage);
+        }
     }
 }
