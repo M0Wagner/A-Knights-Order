@@ -6,13 +6,18 @@ public class enemyPatrol : MonoBehaviour
 {
 
     public float speed;
+
+    // patrol between points
     [SerializeField] private GameObject pointA;
     [SerializeField] private GameObject pointB;
+
     private Rigidbody2D rb;
     private Animator animator;  
     private Transform currentPoint;
+
     [SerializeField] public float damage;
 
+    // implement for player knockback
     public PlayerMovement playerMovement;
 
     // Start is called before the first frame update
@@ -20,13 +25,18 @@ public class enemyPatrol : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();   
+
+        // enemy allways starts to fly to point B
         currentPoint = pointB.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // isnt used once in script (Moritz??????????????????????)
         Vector2 point = currentPoint.position - transform.position;
+
+        // change directions if enemy is at the point
         if (currentPoint == pointB.transform)
         {
             rb.velocity = new Vector2(speed, 0);

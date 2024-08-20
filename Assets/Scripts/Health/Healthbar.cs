@@ -11,11 +11,13 @@ public class Healthba : MonoBehaviour
 
     private void Start()
     {
+        // healthbar starts at full count
         totalHealthBar.fillAmount = playerHealth.currentHealth / 10;
     }
 
     private void Update()
     {
+        // refresh healthbar
         currentHealthBar.fillAmount = playerHealth.currentHealth / 10;
     }
 }

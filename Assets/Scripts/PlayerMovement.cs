@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private Animator animator;
     private BoxCollider2D boxCollider;
+
+    // walljump has a cooldown so you cant spam walljump
     private float wallJumpCooldown;
     private GameObject cam;
 
@@ -24,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool KnockFromRight;
 
-
+    // set variables when game is started
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -35,11 +37,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        // get input from A-D or < - >
         float horizontalInput = Input.GetAxis("Horizontal");
 
         // if not hit by enemy player is able to move
         if (KBCounter <= 0)
         {
+            // might me unneccessary to put in here 
             // flip character when moving
             if (horizontalInput > 0.01f)
                 transform.localScale = Vector3.one;
@@ -51,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (KnockFromRight)
             {
+                // - is for knockback to left
                 body.velocity = new Vector2(-KBForce, KBForce / 2);
             }
             if (!KnockFromRight)
@@ -64,19 +69,19 @@ public class PlayerMovement : MonoBehaviour
         // set animator input
         animator.SetBool("isRunning", horizontalInput != 0);
         animator.SetBool("isGrounded", isGrounded());
-
-        // look 
+        
+        // look (not working yet)
         if (Input.GetKey(KeyCode.W))
             LookUp();
 
-        // dodge
+        // dodge / slide, check if button is pressed
         if (Input.GetKey(KeyCode.LeftShift))
             Dodge(horizontalInput);
 
         // wall jump logic + jump
         if (wallJumpCooldown > 0.2f && KBCounter <= 0)
         {
-            // movement 
+            // movement (left / right)
             body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
             // reduce gravity to slowly slide down wall
@@ -86,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
                 body.velocity = Vector2.zero;
             }
 
-            // reset gravity to normal
+            // reset gravity to normal if not on wall
             else
                 body.gravityScale = 4f;
 
@@ -98,24 +103,28 @@ public class PlayerMovement : MonoBehaviour
             wallJumpCooldown += Time.deltaTime;
     }
 
-    // function to enable jumping
+    // jump logic
     private void Jump()
     {
+        // check if player is on the ground
         if (isGrounded())
         {
             body.velocity = new Vector2(body.velocity.x, jumpPower);
             animator.SetTrigger("jump");
         }
 
-        // enable wall jump
+        // walljump logic
+        // enable wall jump, can only be done if not on the ground
         else if (isOnWall() && !isGrounded())
         {
             wallJumpCooldown = 0;
+
+            // move player upwards (walljump)
             body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x), 18);
         }
     }
 
-    // dodge / slide player
+    // dodge / slide player logic
     private void Dodge(float horizontalInput)
     {
         if (isGrounded())
@@ -125,12 +134,13 @@ public class PlayerMovement : MonoBehaviour
         }  
     }
 
-    // not working
+    // not working yet, reservated to look upwards / downwards
     private void LookUp()
     {
         cam.transform.Translate(0, 100, 0);
     }
 
+    // not in use 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
