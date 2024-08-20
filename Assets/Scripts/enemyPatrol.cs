@@ -6,8 +6,8 @@ public class enemyPatrol : MonoBehaviour
 {
 
     public float speed;
-    public GameObject pointA;
-    public GameObject pointB;
+    [SerializeField] private GameObject pointA;
+    [SerializeField] private GameObject pointB;
     private Rigidbody2D rb;
     private Animator animator;  
     private Transform currentPoint;
@@ -19,7 +19,6 @@ public class enemyPatrol : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();   
         currentPoint = pointB.transform;
-        
     }
 
     // Update is called once per frame
@@ -35,15 +34,18 @@ public class enemyPatrol : MonoBehaviour
             rb.velocity = new Vector2 (-speed, 0);
         }
 
+        // rotate enemy to left
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
         {
             currentPoint = pointA.transform;
-            transform.localScale = new Vector3(-6, 6, 6);
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
+
+        // rotate enemy to right
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
         {
             currentPoint = pointB.transform;
-            transform.localScale = new Vector3(6, 6, 6);
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
     }
 

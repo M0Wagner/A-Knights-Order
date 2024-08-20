@@ -1736,7 +1736,7 @@ Transform:
   m_GameObject: {fileID: 772467898}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.75, y: 1.98, z: 0.033503883}
+  m_LocalPosition: {x: 11.75, y: 1.87, z: 0.033503883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2952,7 +2952,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2971,7 +2971,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527536898}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -2993,10 +2993,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.031104088, y: 0.054451466}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3007,7 +3007,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 12.31591, y: 5.2559767}
   m_EdgeRadius: 0
 --- !u!212 &1527536903
 SpriteRenderer:
@@ -3070,7 +3070,7 @@ Transform:
   m_GameObject: {fileID: 1527536898}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7856, y: 2.1152, z: -0.036972366}
+  m_LocalPosition: {x: 7.7856, y: 1.87, z: -0.036972366}
   m_LocalScale: {x: 0.23410513, y: 0.21912627, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3088,7 +3088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd38ae5954c9d12428f0e5ec0767b70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.75
   pointA: {fileID: 1893351588}
   pointB: {fileID: 772467898}
   damage: 1
@@ -3708,7 +3708,7 @@ Transform:
   m_GameObject: {fileID: 1893351588}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 1.98, z: 0.033503883}
+  m_LocalPosition: {x: 7, y: 1.87, z: 0.033503883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4199,5 +4199,5 @@ SceneRoots:
   - {fileID: 1886614084}
   - {fileID: 924076223}
   - {fileID: 1527536904}
-  - {fileID: 772467899}
   - {fileID: 1893351590}
+  - {fileID: 772467899}
