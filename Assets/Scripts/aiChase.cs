@@ -6,6 +6,7 @@ public class aiChase : MonoBehaviour
 {
     public GameObject player;
     public float speed;
+    [SerializeField] public float damage;
 
     private float distance;
     // Start is called before the first frame update
@@ -34,6 +35,14 @@ public class aiChase : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            collision.GetComponent<Health>().TakeDamage(damage);
         }
     }
 }
