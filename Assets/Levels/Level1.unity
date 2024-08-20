@@ -1223,6 +1223,10 @@ MonoBehaviour:
     m_Bits: 64
   speed: 9
   jumpPower: 15
+  KBForce: 10
+  KBCounter: 0
+  KBTotalTime: 0.2
+  KnockFromRight: 0
 --- !u!95 &443503061
 Animator:
   serializedVersion: 5
@@ -1454,6 +1458,7 @@ MonoBehaviour:
   pointA: {fileID: 300092474}
   pointB: {fileID: 1646171762}
   damage: 1
+  playerMovement: {fileID: 443503060}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3092,6 +3097,7 @@ MonoBehaviour:
   pointA: {fileID: 1893351588}
   pointB: {fileID: 772467898}
   damage: 1
+  playerMovement: {fileID: 443503060}
 --- !u!1 &1623752991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3501,6 +3507,7 @@ MonoBehaviour:
   player: {fileID: 443503055}
   speed: 2
   damage: 1
+  playerMovement: {fileID: 443503060}
 --- !u!95 &1886614080
 Animator:
   serializedVersion: 5

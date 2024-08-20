@@ -13,6 +13,8 @@ public class enemyPatrol : MonoBehaviour
     private Transform currentPoint;
     [SerializeField] public float damage;
 
+    public PlayerMovement playerMovement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,8 +59,23 @@ public class enemyPatrol : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        // check if collides with player
         if (collision.tag == "Player")
         {
+            // start counter
+            playerMovement.KBCounter = playerMovement.KBTotalTime;
+
+            if (collision.transform.position.x <= transform.position.x)
+            {
+                playerMovement.KnockFromRight = true;
+            }
+            if (collision.transform.position.x > transform.position.x)
+            {
+                playerMovement.KnockFromRight = false;
+            }
+
+            // player takes damage
             collision.GetComponent<Health>().TakeDamage(damage);
         }
     }
