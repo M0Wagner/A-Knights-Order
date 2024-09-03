@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class aiChase : MonoBehaviour
 {
+    [Header ("Target")]
     public GameObject player;
+    
+    [Header ("Individual Stats")]
     public float speed;
     [SerializeField] public float damage;
 

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class enemyPatrol : MonoBehaviour
 {
-
-    public float speed;
-
     // patrol between points
+
+    [Header ("Patrol Points")]
     [SerializeField] private GameObject pointA;
     [SerializeField] private GameObject pointB;
 
@@ -15,6 +14,8 @@ public class enemyPatrol : MonoBehaviour
     private Animator animator;  
     private Transform currentPoint;
 
+    [Header ("Individual Stats")]
+    public float speed;
     [SerializeField] public float damage;
 
     // implement for player knockback

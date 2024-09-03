@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+
+    [Header ("Movement")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
     
@@ -19,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpCooldown;
     private GameObject cam;
 
+    [Header ("Knockback")]
     // knockback
     public float KBForce;
     public float KBCounter;

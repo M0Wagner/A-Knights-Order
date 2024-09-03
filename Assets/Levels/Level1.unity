@@ -924,8 +924,8 @@ GameObject:
   - component: {fileID: 443503057}
   - component: {fileID: 443503056}
   - component: {fileID: 443503059}
-  - component: {fileID: 443503060}
   - component: {fileID: 443503061}
+  - component: {fileID: 443503060}
   - component: {fileID: 443503062}
   - component: {fileID: 443503063}
   m_Layer: 7
@@ -1148,11 +1148,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 443503061}
-  attackPoint: {fileID: 1537200633}
-  attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
+  attackPoint: {fileID: 1537200633}
+  attackRange: 0.5
   attackDamage: 1
 --- !u!1 &459715641
 GameObject:
@@ -1348,9 +1348,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd38ae5954c9d12428f0e5ec0767b70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   pointA: {fileID: 300092474}
   pointB: {fileID: 1646171762}
+  speed: 2
   damage: 1
   playerMovement: {fileID: 443503060}
 --- !u!114 &459715648
@@ -2871,9 +2871,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd38ae5954c9d12428f0e5ec0767b70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.75
   pointA: {fileID: 1893351588}
   pointB: {fileID: 772467898}
+  speed: 0.75
   damage: 1
   playerMovement: {fileID: 443503060}
 --- !u!114 &1527536906

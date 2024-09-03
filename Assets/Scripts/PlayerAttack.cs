@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public Animator animator;
-    
+    public LayerMask enemyLayers;
+
+    [Header ("Individual Stats")]
     public Transform attackPoint;
     public float attackRange = 0.5f;
-    public LayerMask enemyLayers;
 
     public int attackDamage = 1;
 
