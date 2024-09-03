@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
             LookUp();
 
         // dodge / slide, check if button is pressed
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
             Dodge(horizontalInput);
 
         // wall jump logic + jump
@@ -140,12 +140,6 @@ public class PlayerMovement : MonoBehaviour
         cam.transform.Translate(0, 100, 0);
     }
 
-    // not in use 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
-
     // check if player is on the ground to enable jump
     private bool isGrounded()
     {
@@ -158,5 +152,11 @@ public class PlayerMovement : MonoBehaviour
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null;
+    }
+
+    public bool canAttack()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        return horizontalInput == 0 && isGrounded() && !isOnWall();
     }
 }

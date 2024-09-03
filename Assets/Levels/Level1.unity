@@ -927,6 +927,7 @@ GameObject:
   - component: {fileID: 443503060}
   - component: {fileID: 443503061}
   - component: {fileID: 443503062}
+  - component: {fileID: 443503063}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1043,7 +1044,8 @@ Transform:
   m_LocalPosition: {x: 4.12, y: 1.22, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1537200633}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &443503059
@@ -1131,6 +1133,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
+  iFramesDuration: 1
+  numberOfFlashes: 1
+--- !u!114 &443503063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443503055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a8eb6aeb78f154aaaa96bdb349e328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 443503061}
+  attackPoint: {fileID: 1537200633}
+  attackRange: 0.5
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  attackDamage: 1
 --- !u!1 &459715641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,7 +1168,8 @@ GameObject:
   - component: {fileID: 459715643}
   - component: {fileID: 459715642}
   - component: {fileID: 459715647}
-  m_Layer: 0
+  - component: {fileID: 459715648}
+  m_Layer: 8
   m_Name: batAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1329,6 +1353,19 @@ MonoBehaviour:
   pointB: {fileID: 1646171762}
   damage: 1
   playerMovement: {fileID: 443503060}
+--- !u!114 &459715648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459715641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b344225e92f4ecb4887b99a5a188081c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,9 +2691,10 @@ GameObject:
   - component: {fileID: 1527536901}
   - component: {fileID: 1527536900}
   - component: {fileID: 1527536905}
-  m_Layer: 0
+  - component: {fileID: 1527536906}
+  m_Layer: 8
   m_Name: wanderingDrake
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2838,6 +2876,50 @@ MonoBehaviour:
   pointB: {fileID: 772467898}
   damage: 1
   playerMovement: {fileID: 443503060}
+--- !u!114 &1527536906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527536898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b344225e92f4ecb4887b99a5a188081c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+--- !u!1 &1537200632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1537200633}
+  m_Layer: 7
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1537200633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537200632}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.35, y: -0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 443503058}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1646171762
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,7 +3177,8 @@ GameObject:
   - component: {fileID: 1886614081}
   - component: {fileID: 1886614080}
   - component: {fileID: 1886614079}
-  m_Layer: 0
+  - component: {fileID: 1886614085}
+  m_Layer: 8
   m_Name: batFollow
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -3278,6 +3361,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1886614085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886614078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b344225e92f4ecb4887b99a5a188081c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
 --- !u!1 &1893351588
 GameObject:
   m_ObjectHideFlags: 0
