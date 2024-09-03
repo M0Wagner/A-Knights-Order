@@ -88,5 +88,5 @@ public class enemyPatrol : MonoBehaviour
             // player takes damage
             collision.GetComponent<Health>().TakeDamage(damage);
         }
-    }
+    }  
 }

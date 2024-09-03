@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
             KBCounter -= Time.deltaTime;
         }
-
+        
         // set animator input
         animator.SetBool("isRunning", horizontalInput != 0);
         animator.SetBool("isGrounded", isGrounded());
