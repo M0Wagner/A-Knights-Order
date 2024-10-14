@@ -49,9 +49,9 @@ public class PlayerMovement : MonoBehaviour
             // might me unneccessary to put in here 
             // flip character when moving
             if (horizontalInput > 0.01f)
-                transform.localScale = Vector3.one;
+                transform.localScale = new Vector3(0.135f, 0.135f, 1);
             else if (horizontalInput < -0.01f)
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-0.135f, 0.135f, 1);
         }
         // player gets knockback when getting hit
         else

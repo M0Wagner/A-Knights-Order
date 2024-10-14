@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            animator.SetTrigger("hurt");
+            //animator.SetTrigger("hurt");
             StartCoroutine(Invulnerability());
         }
         else
