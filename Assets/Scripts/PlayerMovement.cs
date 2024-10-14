@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float KBTotalTime;
 
     public bool KnockFromRight;
+    public int coin;
 
     // set variables when game is started
     private void Awake()
