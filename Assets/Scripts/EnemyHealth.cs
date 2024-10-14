@@ -7,16 +7,19 @@ public class enemyHealth : MonoBehaviour
     public int maxHealth = 1;
     int currentHealth;
     private SpriteRenderer spriteRenderer;
+    public HealthBarBehvior healthBarBehvior;
 
     private void Start()
     {
         currentHealth = maxHealth;
+        healthBarBehvior.setHealth(currentHealth, maxHealth);
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public IEnumerator takeDamage(int damage)
     {
         currentHealth -= damage;
+        healthBarBehvior.setHealth(currentHealth, maxHealth);
 
         // Play hurt animation
         yield return new WaitForSeconds(0.25f);
