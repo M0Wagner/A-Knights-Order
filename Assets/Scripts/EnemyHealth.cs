@@ -43,6 +43,7 @@ public class enemyHealth : MonoBehaviour
 
     void Die() 
     {
+        GetComponent<LootBag>().InstantiateLoot(transform.position);
         Debug.Log("Enemy died");
         // Die animation
         Destroy(gameObject);

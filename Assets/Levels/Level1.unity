@@ -1401,6 +1401,7 @@ GameObject:
   - component: {fileID: 459715642}
   - component: {fileID: 459715647}
   - component: {fileID: 459715648}
+  - component: {fileID: 459715649}
   m_Layer: 8
   m_Name: batAB
   m_TagString: Untagged
@@ -1600,6 +1601,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   healthBarBehvior: {fileID: 251179847}
+--- !u!114 &459715649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459715641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55352151fbe693a41a37dd77d828e8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 3783596283804392385, guid: 992f8a0395874464aa2e44149e2b3f3d, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: 6087f5a6bc301b840a9f686ac3ffe373, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,6 +4082,7 @@ GameObject:
   - component: {fileID: 1527536900}
   - component: {fileID: 1527536905}
   - component: {fileID: 1527536906}
+  - component: {fileID: 1527536907}
   m_Layer: 8
   m_Name: wanderingDrake
   m_TagString: enemy
@@ -4265,6 +4282,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   healthBarBehvior: {fileID: 1203806883}
+--- !u!114 &1527536907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527536898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55352151fbe693a41a37dd77d828e8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 3783596283804392385, guid: 992f8a0395874464aa2e44149e2b3f3d, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: 6087f5a6bc301b840a9f686ac3ffe373, type: 2}
 --- !u!1 &1537200632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4793,6 +4825,7 @@ GameObject:
   - component: {fileID: 1886614080}
   - component: {fileID: 1886614079}
   - component: {fileID: 1886614085}
+  - component: {fileID: 1886614086}
   m_Layer: 8
   m_Name: batFollow
   m_TagString: enemy
@@ -4991,6 +5024,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   healthBarBehvior: {fileID: 2077606240}
+--- !u!114 &1886614086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886614078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55352151fbe693a41a37dd77d828e8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 3783596283804392385, guid: 992f8a0395874464aa2e44149e2b3f3d, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: 6087f5a6bc301b840a9f686ac3ffe373, type: 2}
 --- !u!1 &1893351588
 GameObject:
   m_ObjectHideFlags: 0

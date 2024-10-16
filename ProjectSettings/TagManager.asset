@@ -8,6 +8,7 @@ TagManager:
   - Background
   - PlayerCam
   - enemy
+  - coin
   layers:
   - Default
   - TransparentFX
