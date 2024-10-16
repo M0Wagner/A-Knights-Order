@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -12,16 +13,30 @@ public class PlayerAttack : MonoBehaviour
     public float attackRange = 0.5f;
 
     public int attackDamage = 1;
+    private bool isAttacking = false;
+    [SerializeField] private float cooldown;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-            Attack();
+        if (cooldown <= 0)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Attack();
+                cooldown = 0.5f;
+            }
+        }
+        else
+        {
+            cooldown -= Time.deltaTime;
+        }
     }
         
 
     private void Attack()
     {
+        isAttacking = true;
+
         // Play an attack animation
         animator.SetTrigger("attack");
 
@@ -33,7 +48,6 @@ public class PlayerAttack : MonoBehaviour
         {
             StartCoroutine(enemy.GetComponent<enemyHealth>().takeDamage(attackDamage));
         }
-
     }
 
     private void OnDrawGizmosSelected()
@@ -44,6 +58,4 @@ public class PlayerAttack : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
-
-
 }

@@ -1559,6 +1559,7 @@ MonoBehaviour:
   attackPoint: {fileID: 1537200633}
   attackRange: 1
   attackDamage: 1
+  cooldown: 2
 --- !u!1 &459715641
 GameObject:
   m_ObjectHideFlags: 0
