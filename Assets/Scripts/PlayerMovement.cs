@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpCooldown;
     private GameObject cam;
 
+    private bool isMovementEnabled = true;
+
     [Header ("Knockback")]
     // knockback
     public float KBForce;
@@ -41,8 +43,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        float horizontalInput;
         // get input from A-D or < - >
-        float horizontalInput = Input.GetAxis("Horizontal");
+        if (isMovementEnabled)
+            horizontalInput = Input.GetAxis("Horizontal");
+        else 
+            horizontalInput = 0;
+        
 
         // if not hit by enemy player is able to move
         if (KBCounter <= 0)
@@ -162,5 +169,14 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         return horizontalInput == 0 && isGrounded() && !isOnWall();
+    }
+
+    public void disableMovement()
+    {
+        isMovementEnabled = false;
+    }
+    public void enableMovement()
+    {
+        isMovementEnabled = true;
     }
 }
