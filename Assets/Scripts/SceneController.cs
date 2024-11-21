@@ -29,7 +29,12 @@ public class SceneController : MonoBehaviour
     // for jumping to next level
     public void NextLevel()
     {
-        StartCoroutine(LoadLevel());
+        StartCoroutine(LoadLevel(+1));
+    }
+
+    public void previousLevel()
+    {
+        StartCoroutine(LoadLevel(-1));
     }
 
     // for jumping to chosen level
@@ -39,12 +44,12 @@ public class SceneController : MonoBehaviour
     }
 
     // set animation for level change
-    IEnumerator LoadLevel()
+    IEnumerator LoadLevel(int direction)
     {
         animator.SetTrigger("End");
         playerMovement.disableMovement();
         yield return new WaitForSeconds(1);
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + direction);
         animator.SetTrigger("Start");
         playerMovement.enableMovement();
     }
