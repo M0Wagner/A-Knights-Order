@@ -5,7 +5,7 @@ using UnityEngine;
 public class enemyHealth : MonoBehaviour
 {
     public int maxHealth = 1;
-    int currentHealth;
+    public int currentHealth;
     private SpriteRenderer spriteRenderer;
     public HealthBarBehvior healthBarBehvior;
 
