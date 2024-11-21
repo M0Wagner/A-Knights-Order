@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [Header ("Movement")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
-    [SerializeField] private float dashSpeed;
+    private float dashSpeed = 15;
     
     private Rigidbody2D body;
     private Animator animator;
@@ -35,6 +35,12 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isDashing;
 
+    [SerializeField] private DialogueUI dialogueUI;
+
+    public DialogueUI DialogueUI => dialogueUI;
+
+    public IInteractable Interactable {  get; set; }
+
     // set variables when game is started
     private void Awake()
     {
@@ -46,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (dialogueUI.IsOpen)
+            return;
+
         float horizontalInput;
         // get input from A-D or < - >
         if (isMovementEnabled)
@@ -87,6 +96,9 @@ public class PlayerMovement : MonoBehaviour
             // check if space is pressed for jump
             if (Input.GetKey(KeyCode.Space))
                 Jump();
+
+            if (Input.GetKey(KeyCode.E))
+                    Interactable?.Interact(this);
         }
 
 
@@ -182,7 +194,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator endDash()
     {
         // Dash duration
-        yield return new WaitForSeconds(1f);  
+        yield return new WaitForSeconds(0.5f);  
         isDashing = false;
     }
 

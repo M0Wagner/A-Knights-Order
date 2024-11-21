@@ -19,7 +19,7 @@ public class SceneController : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        // if new scene has this object aswell => destroy
+        // if new scene has this object aswell => destroy 
         else
         {
             Destroy(gameObject);
