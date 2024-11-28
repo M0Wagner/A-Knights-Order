@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -338,6 +339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d205dc240e74714882673078d5a0a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goNextLevel: 0
+  levelName: Level1
 --- !u!1 &330896808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1237,6 @@ MonoBehaviour:
     m_Bits: 64
   speed: 9
   jumpPower: 15
-  dashSpeed: 0
   KBForce: 10
   KBCounter: 0
   KBTotalTime: 0.2

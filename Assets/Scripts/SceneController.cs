@@ -38,7 +38,7 @@ public class SceneController : MonoBehaviour
     }
 
     // for jumping to chosen level
-    public void LoadScene(string sceneName)
+    public void LoadSceneByName(string sceneName)
     {
         SceneManager.LoadSceneAsync(sceneName);
     }
