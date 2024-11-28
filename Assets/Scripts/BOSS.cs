@@ -109,26 +109,74 @@ public class BossController : MonoBehaviour
 
     private void AttackPlayer()
     {
+        int randomNumber = Random.Range(1, 5); // Updated to include the fourth attack
+
+        // Trigger attack animation
+        if (randomNumber == 1)
         {
-            int randomNumber = Random.Range(1, 3);
-
-            // Trigger attack animation
-            if (randomNumber == 1)
-            {
-                animator.SetTrigger("Attack_basic");
-            }
-            else if (randomNumber == 2)
-            {
-                StartCoroutine(PerformStrikeAttack());
-            }
-            
-
-
-            // Set the cooldown flag and attack flag
-            isInAttackCooldown = true;
-            hasAttackedThisCycle = true; // Mark that an attack has occurred
-            attackCooldownTimer = 0f; // Reset cooldown timer
+            animator.SetTrigger("Attack_basic");
         }
+        else if (randomNumber == 2)
+        {
+            StartCoroutine(PerformStrikeAttack());
+        }
+        else if (randomNumber == 3)
+        {
+            animator.SetTrigger("Attack_basic_2");
+            damageAmount = 20f;
+        }
+        else if (randomNumber == 4) // New jump attack logic
+        {
+            StartCoroutine(PerformJumpAttack());
+        }
+
+        // Set the cooldown flag and attack flag
+        isInAttackCooldown = true;
+        hasAttackedThisCycle = true; // Mark that an attack has occurred
+        attackCooldownTimer = 0f; // Reset cooldown timer
+    }
+
+    // Coroutine for the jump attack
+    private IEnumerator PerformJumpAttack()
+    {
+        // Trigger jump attack animation
+        animator.SetTrigger("Attack_jump_sword");
+
+        // Calculate the jump arc
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = player.position;
+
+        float jumpHeight = 3f; // Height of the jump
+        float jumpDuration = 1f; // Time for the jump to complete
+        float elapsedTime = 0f;
+
+        while (elapsedTime < jumpDuration)
+        {
+            // Parabolic jump formula
+            float t = elapsedTime / jumpDuration;
+            float height = 4 * jumpHeight * t * (1 - t); // Simple parabola equation
+
+            Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);
+            currentPosition.y += height;
+
+            transform.position = currentPosition;
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        // Snap position to the target at the end
+        transform.position = targetPosition;
+
+        // Apply damage to the player (if in range)
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer <= attackRange)
+        {
+            damagePlayer();
+        }
+
+        // Wait for a short moment before resuming movement
+        yield return new WaitForSeconds(0.5f);
     }
 
     /*private void rangedAttack()
@@ -160,6 +208,8 @@ public class BossController : MonoBehaviour
         {
             playerHealth.TakeDamage(damageAmount);
         }
+
+        damageAmount = 10f;
     }
 
     private IEnumerator Sleep(float sleepDuration)
@@ -171,7 +221,7 @@ public class BossController : MonoBehaviour
     {
         // Move backward
         Vector3 moveBackPosition = transform.position + (transform.right * -2f); // Move 2 units back
-        float moveBackTime = 1f; // Time to move back
+        float moveBackTime = 0.5f; // Time to move back
         float elapsedTime = 0f;
 
         while (elapsedTime < moveBackTime)
@@ -185,12 +235,12 @@ public class BossController : MonoBehaviour
         animator.SetTrigger("Attack_strike");
 
         // Wait for animation duration (adjust based on your animation length)
-        yield return new WaitForSeconds(0.35f); // Assume animation takes 0.5 seconds
+        //yield return new WaitForSeconds(0.05f); // Assume animation takes 0.5 seconds
 
         // Move forward to the player's position
         Vector3 moveToPlayerPosition = player.position;
         elapsedTime = 0f;
-        float moveToPlayerTime = 0.5f; // Time to move back to the player
+        float moveToPlayerTime = 0.2f; // Time to move back to the player
 
         while (elapsedTime < moveToPlayerTime)
         {
