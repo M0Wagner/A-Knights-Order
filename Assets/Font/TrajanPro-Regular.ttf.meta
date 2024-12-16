@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8940712893694bd43aa4221ab2568334
+guid: 1d0e9519d4aa4f84c8cbbf2405cfb4ef
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Rose Knight
+  - Trajan Pro
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
