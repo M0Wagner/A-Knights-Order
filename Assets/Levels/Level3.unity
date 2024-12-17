@@ -325,7 +325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6036550200021268582, guid: 8e230eaac1e575d478c1f0c23d0a5f68, type: 3}
       propertyPath: m_Name
-      value: BeginLevel
+      value: Swap-Level1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5272372818037421031, guid: 8e230eaac1e575d478c1f0c23d0a5f68, type: 3}
@@ -355,6 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goNextLevel: 0
   levelName: Level1
+  exitPostion: {x: 14.14, y: -1.76}
 --- !u!1 &417780627
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +791,11 @@ MonoBehaviour:
   KnockFromRight: 0
   coin: 0
   dialogueUI: {fileID: 1919294545}
+  moveLeftKey: 97
+  moveRightKey: 100
+  jumpKey: 32
+  dashKey: 304
+  interactKey: 101
 --- !u!95 &443503061
 Animator:
   serializedVersion: 5

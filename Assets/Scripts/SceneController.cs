@@ -9,6 +9,8 @@ public class SceneController : MonoBehaviour
     [SerializeField] Animator animator;
     PlayerMovement playerMovement;
 
+    private Dictionary<string, Vector2> entryPoints = new Dictionary<string, Vector2>();
+
     private void Awake()
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
@@ -52,5 +54,18 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + direction);
         animator.SetTrigger("Start");
         playerMovement.enableMovement();
+    }
+
+    public void SetEntryPoint(string levelName, Vector2 position)
+    {
+        entryPoints[levelName] = position;
+    }
+
+    public Vector2 GetEntryPoint(string levelName)
+    {
+        if (entryPoints.ContainsKey(levelName))
+            return entryPoints[levelName];
+        
+        return Vector2.zero;
     }
 }

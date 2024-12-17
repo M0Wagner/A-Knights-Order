@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -50,6 +51,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        string currentLevel = SceneManager.GetActiveScene().name;
+        if (SceneController.instance != null)
+        {
+            Vector2 entryPoint = SceneController.instance.GetEntryPoint(currentLevel);
+            
+            if (entryPoint != Vector2.zero)
+                transform.position = entryPoint;
+        }
+    
+
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
