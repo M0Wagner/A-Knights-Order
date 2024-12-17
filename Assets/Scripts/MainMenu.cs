@@ -9,6 +9,7 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject buttonLeft;
     public GameObject buttonRight;
     public GameObject buttonInteract;
+    private GameObject currentButton = null;
     private bool waitingForInput = false;
     PlayerMovement playerMovement;
 
@@ -40,20 +41,8 @@ public class NewBehaviourScript : MonoBehaviour
     public void ChangeMoveButton(GameObject targetImage)
     {
         waitingForInput = true;
+        currentButton = targetImage;
         Debug.Log("Bitte eine Taste für " + targetImage.name + " drücken!");
-
-        if (targetImage.name == "ButtonLeft")
-        {
-            buttonLeft = targetImage;
-        }
-        else if (targetImage.name == "ButtonRight")
-        {
-            buttonRight = targetImage;
-        }
-        else if (targetImage.name == "ButtonInteract")
-        {
-            buttonInteract = targetImage;
-        }
     }
 
     void Update()
@@ -78,6 +67,12 @@ public class NewBehaviourScript : MonoBehaviour
 
     void UpdateKeyImage(KeyCode key)
     {
+        if (key == keyForLeft || key == keyForRight || key == keyForJump || key == keyForDash || key == keyForInteract)
+        {
+            Debug.LogWarning("Der Key " + key.ToString() + " ist bereits einer Steuerung zugeordnet.");
+            return;
+        }
+
         Sprite newSprite = null;
 
         if (key == KeyCode.A)
@@ -96,39 +91,39 @@ public class NewBehaviourScript : MonoBehaviour
         {
             newSprite = Resources.Load<Sprite>("RightArrow");
         }
-        Debug.Log(newSprite + " | " + key);
 
-        //if (newSprite != null)
-        //{
-        Debug.Log(buttonLeft + " brzh " + waitingForInput);
-            if (buttonLeft != null && waitingForInput)
+        if (currentButton != null)
+        {
+            currentButton.GetComponent<Image>().sprite = newSprite;
+
+            if (currentButton == buttonLeft)
             {
-                buttonLeft.GetComponent<Image>().sprite = newSprite;
                 keyForLeft = key;
-                Debug.Log("Setting new Key for buttonLeft: " + keyForLeft);
                 PlayerPrefs.SetString("MoveLeftKey", keyForLeft.ToString());
-                //playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, playerMovement.interactKey);
             }
-            else if (buttonRight != null && waitingForInput)
+            else if (currentButton == buttonRight)
             {
-                buttonRight.GetComponent<Image>().sprite = newSprite;
                 keyForRight = key;
                 PlayerPrefs.SetString("MoveRightKey", keyForRight.ToString());
-                //playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, playerMovement.interactKey);
             }
-            else if (buttonInteract != null && waitingForInput)
+            else if (currentButton == buttonInteract)
             {
-                buttonInteract.GetComponent<Image>().sprite = newSprite;
                 keyForInteract = key;
                 PlayerPrefs.SetString("InteractKey", keyForInteract.ToString());
-                //playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, keyForInteract);
             }
+            PlayerPrefs.Save();
+
+
+            Debug.Log("Taste für " + currentButton.name + " gesetzt: " + key);
+            currentButton = null;
+            waitingForInput = false;
         }
-        //else
-        //{
-        //    Debug.LogError("Sprite konnte nicht geladen werden! Überprüfe den Pfad.");
-        //}
-    //}
+        else
+        {
+            Debug.LogError("Sprite konnte nicht geladen werden oder Button ist null.");
+        }
+    }
+
 
     public void SaveChanges()
     {
@@ -138,7 +133,6 @@ public class NewBehaviourScript : MonoBehaviour
         PlayerPrefs.SetString("DashKey", keyForDash.ToString());
         PlayerPrefs.SetString("InteractKey", keyForInteract.ToString());
 
-        PlayerPrefs.Save();
         Debug.Log("Key Left: " + keyForLeft + " Änderungen gespeichert.");
     }
 

@@ -44,10 +44,11 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode dashKey = KeyCode.LeftShift;
     public KeyCode interactKey = KeyCode.E;
 
-    /*void Start()
+    void Start()
     {
         LoadControls();
-    }*/
+        Debug.Log(moveLeftKey + " " +  moveRightKey + " " + interactKey);
+    }
 
     private void Awake()
     {
@@ -209,18 +210,10 @@ public class PlayerMovement : MonoBehaviour
         isMovementEnabled = true;
     }
 
-    public void SetControls(KeyCode newMoveLeft, KeyCode newMoveRight, KeyCode newJump, KeyCode newDash, KeyCode newInteract)
-    {
-        moveLeftKey = newMoveLeft;
-        moveRightKey = newMoveRight;
-        jumpKey = newJump;
-        dashKey = newDash;
-        interactKey = newInteract;
-    }
-
     public void LoadControls()
     {
         // Laden der Tastenbelegungen aus PlayerPrefs
+
         if (PlayerPrefs.HasKey("MoveLeftKey"))
             moveLeftKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("MoveLeftKey"));
 
