@@ -6,13 +6,17 @@ using UnityEngine.UI;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public Button buttonLeft;
-    public Button buttonRight;
+    public GameObject buttonLeft;
+    public GameObject buttonRight;
+    public GameObject buttonInteract;
     private bool waitingForInput = false;
-    public PlayerMovement playerMovement;
+    PlayerMovement playerMovement;
 
     private KeyCode keyForLeft = KeyCode.None;
     private KeyCode keyForRight = KeyCode.None;
+    private KeyCode keyForJump = KeyCode.Space;
+    private KeyCode keyForDash = KeyCode.LeftShift;
+    private KeyCode keyForInteract = KeyCode.None;
 
     public void PlayGame()
     {
@@ -61,58 +65,64 @@ public class NewBehaviourScript : MonoBehaviour
 
     void UpdateKeyImage(KeyCode key)
     {
-        string path = "Menu/Controls/KeyImages/";
-
         Sprite newSprite = null;
 
         if (key == KeyCode.A)
         {
-            newSprite = Resources.Load<Sprite>(path + "A");
+            newSprite = Resources.Load<Sprite>("A");
         }
         else if (key == KeyCode.D)
         {
-            newSprite = Resources.Load<Sprite>(path + "D");
+            newSprite = Resources.Load<Sprite>("D");
         }
         else if (key == KeyCode.LeftArrow)
         {
-            newSprite = Resources.Load<Sprite>(path + "LeftArrow");
+            newSprite = Resources.Load<Sprite>("LeftArrow");
         }
         else if (key == KeyCode.RightArrow)
         {
-            newSprite = Resources.Load<Sprite>(path + "RightArrow");
+            newSprite = Resources.Load<Sprite>("RightArrow");
         }
+        Debug.Log(newSprite + " | " + key);
 
-        if (newSprite != null)
-        {
-            if (buttonLeft != null && waitingForInput && keyForLeft == KeyCode.None)
+        //if (newSprite != null)
+        //{
+            if (buttonLeft != null && waitingForInput)
             {
                 buttonLeft.GetComponent<Image>().sprite = newSprite;
-                keyForLeft = key; // Speichern der Taste für Move Left
+                keyForLeft = key;
+                Debug.Log("Setting new Key for buttonLeft: " + keyForLeft);
                 playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, playerMovement.interactKey);
             }
-            else if (buttonRight != null && waitingForInput && keyForRight == KeyCode.None)
+            else if (buttonRight != null && waitingForInput)
             {
                 buttonRight.GetComponent<Image>().sprite = newSprite;
-                keyForRight = key; // Speichern der Taste für Move Right
+                keyForRight = key;
                 playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, playerMovement.interactKey);
             }
+            else if (buttonInteract != null && waitingForInput)
+            {
+                buttonInteract.GetComponent<Image>().sprite = newSprite;
+                keyForInteract = key;
+                playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, keyForInteract);
+            }
         }
-        else
-        {
-            Debug.LogError("Sprite konnte nicht geladen werden! Überprüfe den Pfad.");
-        }
-    }
+        //else
+        //{
+        //    Debug.LogError("Sprite konnte nicht geladen werden! Überprüfe den Pfad.");
+        //}
+    //}
 
     public void SaveChanges()
     {
         PlayerPrefs.SetString("MoveLeftKey", keyForLeft.ToString());
         PlayerPrefs.SetString("MoveRightKey", keyForRight.ToString());
-        PlayerPrefs.SetString("JumpKey", playerMovement.jumpKey.ToString());
-        PlayerPrefs.SetString("DashKey", playerMovement.dashKey.ToString());
-        PlayerPrefs.SetString("InteractKey", playerMovement.interactKey.ToString());
+        PlayerPrefs.SetString("JumpKey", keyForJump.ToString());
+        PlayerPrefs.SetString("DashKey", keyForDash.ToString());
+        PlayerPrefs.SetString("InteractKey", keyForInteract.ToString());
 
-        PlayerPrefs.Save(); // Speichern in die Datei
-        Debug.Log("Änderungen gespeichert.");
+        PlayerPrefs.Save();
+        Debug.Log("Key Left: " + keyForLeft + " Änderungen gespeichert.");
     }
 
 

@@ -43,10 +43,10 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode dashKey = KeyCode.LeftShift;
     public KeyCode interactKey = KeyCode.E;
 
-    void Start()
+    /*void Start()
     {
         LoadControls();
-    }
+    }*/
 
     private void Awake()
     {
