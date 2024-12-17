@@ -1056,7 +1056,6 @@ MonoBehaviour:
   buttonLeft: {fileID: 289996126}
   buttonRight: {fileID: 1357967107}
   buttonInteract: {fileID: 1224772427}
-  playerMovement: {fileID: 0}
 --- !u!1 &791654394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,10 +2510,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 066a7f7711d5dfa46a07bdc08cefb217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonLeft: {fileID: 0}
-  buttonRight: {fileID: 0}
-  buttonInteract: {fileID: 0}
-  playerMovement: {fileID: 0}
+  buttonLeft: {fileID: 289996126}
+  buttonRight: {fileID: 1357967107}
+  buttonInteract: {fileID: 1739243867}
 --- !u!1 &1938195736
 GameObject:
   m_ObjectHideFlags: 0

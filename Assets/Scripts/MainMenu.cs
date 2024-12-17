@@ -41,6 +41,19 @@ public class NewBehaviourScript : MonoBehaviour
     {
         waitingForInput = true;
         Debug.Log("Bitte eine Taste für " + targetImage.name + " drücken!");
+
+        if (targetImage.name == "ButtonLeft")
+        {
+            buttonLeft = targetImage;
+        }
+        else if (targetImage.name == "ButtonRight")
+        {
+            buttonRight = targetImage;
+        }
+        else if (targetImage.name == "ButtonInteract")
+        {
+            buttonInteract = targetImage;
+        }
     }
 
     void Update()
@@ -87,24 +100,28 @@ public class NewBehaviourScript : MonoBehaviour
 
         //if (newSprite != null)
         //{
+        Debug.Log(buttonLeft + " brzh " + waitingForInput);
             if (buttonLeft != null && waitingForInput)
             {
                 buttonLeft.GetComponent<Image>().sprite = newSprite;
                 keyForLeft = key;
                 Debug.Log("Setting new Key for buttonLeft: " + keyForLeft);
-                playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, playerMovement.interactKey);
+                PlayerPrefs.SetString("MoveLeftKey", keyForLeft.ToString());
+                //playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, playerMovement.interactKey);
             }
             else if (buttonRight != null && waitingForInput)
             {
                 buttonRight.GetComponent<Image>().sprite = newSprite;
                 keyForRight = key;
-                playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, playerMovement.interactKey);
+                PlayerPrefs.SetString("MoveRightKey", keyForRight.ToString());
+                //playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, playerMovement.interactKey);
             }
             else if (buttonInteract != null && waitingForInput)
             {
                 buttonInteract.GetComponent<Image>().sprite = newSprite;
                 keyForInteract = key;
-                playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, keyForInteract);
+                PlayerPrefs.SetString("InteractKey", keyForInteract.ToString());
+                //playerMovement.SetControls(keyForLeft, keyForRight, playerMovement.jumpKey, playerMovement.dashKey, keyForInteract);
             }
         }
         //else
