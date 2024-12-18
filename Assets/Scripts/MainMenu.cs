@@ -136,6 +136,18 @@ public class NewBehaviourScript : MonoBehaviour
         Debug.Log("Key Left: " + keyForLeft + " Änderungen gespeichert.");
     }
 
+    public void ResetToDefault()
+    {
+        PlayerPrefs.SetString("MoveLeftKey", KeyCode.A.ToString());
+        PlayerPrefs.SetString("MoveRightKey", KeyCode.D.ToString());
+        PlayerPrefs.SetString("JumpKey", KeyCode.Space.ToString());
+        PlayerPrefs.SetString("DashKey", KeyCode.LeftShift.ToString());
+        PlayerPrefs.SetString("InteractKey", KeyCode.E.ToString());
+
+        buttonLeft.GetComponent<Image>().sprite = Resources.Load<Sprite>("A");
+        buttonRight.GetComponent<Image>().sprite = Resources.Load<Sprite>("D");
+        buttonInteract.GetComponent<Image>().sprite = Resources.Load<Sprite>("E");
+    }
 
     public void QuitGame()
     {
