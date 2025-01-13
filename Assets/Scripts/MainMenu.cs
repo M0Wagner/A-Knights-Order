@@ -36,9 +36,9 @@ public class NewBehaviourScript : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void Controls()
+    public void Controls(string sceneName)
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadSceneAsync(sceneName);
     }
 
 
@@ -88,9 +88,37 @@ public class NewBehaviourScript : MonoBehaviour
         {
             newSprite = Resources.Load<Sprite>("A");
         }
+        else if (key == KeyCode.S)
+        {
+            newSprite = Resources.Load<Sprite>("S");
+        }
         else if (key == KeyCode.D)
         {
             newSprite = Resources.Load<Sprite>("D");
+        }
+        else if (key == KeyCode.F)
+        {
+            newSprite = Resources.Load<Sprite>("F");
+        }
+        else if (key == KeyCode.G)
+        {
+            newSprite = Resources.Load<Sprite>("G");
+        }
+        else if (key == KeyCode.H)
+        {
+            newSprite = Resources.Load<Sprite>("H");
+        }
+        else if (key == KeyCode.J)
+        {
+            newSprite = Resources.Load<Sprite>("J");
+        }
+        else if (key == KeyCode.K)
+        {
+            newSprite = Resources.Load<Sprite>("K");
+        }
+        else if (key == KeyCode.L)
+        {
+            newSprite = Resources.Load<Sprite>("L");
         }
         else if (key == KeyCode.LeftArrow)
         {
