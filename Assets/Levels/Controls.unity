@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 475110377}
   - component: {fileID: 475110376}
   m_Layer: 5
-  m_Name: ButtonRight
+  m_Name: ButtonRight (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonLeft: {fileID: 289996126}
   buttonRight: {fileID: 1357967107}
-  buttonInteract: {fileID: 1224772427}
+  buttonInteract: {fileID: 1846372561}
 --- !u!1 &791654394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,7 +1445,7 @@ GameObject:
   - component: {fileID: 922909723}
   - component: {fileID: 922909722}
   m_Layer: 5
-  m_Name: ButtonLeft
+  m_Name: ButtonLeft (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2467,7 +2467,7 @@ GameObject:
   - component: {fileID: 1846372563}
   - component: {fileID: 1846372562}
   m_Layer: 5
-  m_Name: ButtonInteraction
+  m_Name: ButtonInteract
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

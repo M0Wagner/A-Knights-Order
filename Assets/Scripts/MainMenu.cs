@@ -132,8 +132,6 @@ public class NewBehaviourScript : MonoBehaviour
         PlayerPrefs.SetString("JumpKey", keyForJump.ToString());
         PlayerPrefs.SetString("DashKey", keyForDash.ToString());
         PlayerPrefs.SetString("InteractKey", keyForInteract.ToString());
-
-        Debug.Log("Key Left: " + keyForLeft + " Änderungen gespeichert.");
     }
 
     public void ResetToDefault()
