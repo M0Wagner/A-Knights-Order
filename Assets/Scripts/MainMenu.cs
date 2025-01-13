@@ -9,6 +9,10 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject buttonLeft;
     public GameObject buttonRight;
     public GameObject buttonInteract;
+    private string buttonLeftImage = "";
+    private string buttonRightImage = "";
+    private string buttonInteractImage = "";
+
     private GameObject currentButton = null;
     private bool waitingForInput = false;
     PlayerMovement playerMovement;
@@ -18,6 +22,11 @@ public class NewBehaviourScript : MonoBehaviour
     private KeyCode keyForJump = KeyCode.Space;
     private KeyCode keyForDash = KeyCode.LeftShift;
     private KeyCode keyForInteract = KeyCode.None;
+
+    void Start()
+    {
+        LoadControlsImages();
+    }
 
     public void PlayGame()
     {
@@ -145,6 +154,20 @@ public class NewBehaviourScript : MonoBehaviour
         buttonLeft.GetComponent<Image>().sprite = Resources.Load<Sprite>("A");
         buttonRight.GetComponent<Image>().sprite = Resources.Load<Sprite>("D");
         buttonInteract.GetComponent<Image>().sprite = Resources.Load<Sprite>("E");
+    }
+
+    public void LoadControlsImages() {
+        if (PlayerPrefs.HasKey("MoveLeftKey"))
+            buttonLeftImage = PlayerPrefs.GetString("MoveLeftKey");
+            buttonLeft.GetComponent<Image>().sprite = Resources.Load<Sprite>(buttonLeftImage);
+
+        if (PlayerPrefs.HasKey("MoveRightKey"))
+            buttonRightImage = PlayerPrefs.GetString("MoveRightKey");
+            buttonRight.GetComponent<Image>().sprite = Resources.Load<Sprite>(buttonRightImage);
+
+        if (PlayerPrefs.HasKey("InteractKey"))
+            buttonInteractImage = PlayerPrefs.GetString("InteractKey");
+            buttonInteract.GetComponent<Image>().sprite = Resources.Load<Sprite>(buttonInteractImage);
     }
 
     public void QuitGame()

@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode moveRightKey = KeyCode.D;
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode dashKey = KeyCode.LeftShift;
-    public KeyCode interactKey = KeyCode.E;
+    public KeyCode interactKey = KeyCode.None;
 
     void Start()
     {
@@ -229,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
         if (PlayerPrefs.HasKey("InteractKey"))
             interactKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractKey"));
 
-        Debug.Log("Kontrollen geladen.");
+        Debug.Log("Kontrollen geladen. InteractKey ist " + interactKey);
     }
 }
 
