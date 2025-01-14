@@ -16,6 +16,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         if (collision.CompareTag("Player") && collision.TryGetComponent(out PlayerMovement player))
         {
             player.Interactable = this;
+            print("Princess is now interactable");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
