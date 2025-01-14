@@ -76,59 +76,72 @@ public class NewBehaviourScript : MonoBehaviour
 
     void UpdateKeyImage(KeyCode key)
     {
+        // Überprüfen, ob der Key bereits einer Steuerung zugeordnet ist
         if (key == keyForLeft || key == keyForRight || key == keyForJump || key == keyForDash || key == keyForInteract)
         {
             Debug.LogWarning("Der Key " + key.ToString() + " ist bereits einer Steuerung zugeordnet.");
             return;
         }
 
-        Sprite newSprite = null;
+        // Dictionary für KeyCode-Sprite-Zuordnungen
+        Dictionary<KeyCode, string> keySpriteMap = new Dictionary<KeyCode, string>
+        {
+            { KeyCode.Alpha1, "1" },
+            { KeyCode.Alpha2, "2" },
+            { KeyCode.Alpha3, "3" },
+            { KeyCode.Alpha4, "4" },
+            { KeyCode.Alpha5, "5" },
+            { KeyCode.Alpha6, "6" },
+            { KeyCode.Alpha7, "7" },
+            { KeyCode.Alpha8, "8" },
+            { KeyCode.Alpha9, "9" },
+            { KeyCode.Alpha0, "0" },
+            { KeyCode.Q, "Q" },
+            { KeyCode.W, "W" },
+            { KeyCode.E, "E" },
+            { KeyCode.R, "R" },
+            { KeyCode.T, "T" },
+            { KeyCode.Z, "Z" },
+            { KeyCode.U, "U" },
+            { KeyCode.I, "I" },
+            { KeyCode.O, "O" },
+            { KeyCode.P, "P" },
+            { KeyCode.A, "A" },
+            { KeyCode.S, "S" },
+            { KeyCode.D, "D" },
+            { KeyCode.F, "F" },
+            { KeyCode.G, "G" },
+            { KeyCode.H, "H" },
+            { KeyCode.J, "J" },
+            { KeyCode.K, "K" },
+            { KeyCode.L, "L" },
+            { KeyCode.Y, "Y" },
+            { KeyCode.X, "X" },
+            { KeyCode.C, "C" },
+            { KeyCode.V, "V" },
+            { KeyCode.B, "B" },
+            { KeyCode.N, "N" },
+            { KeyCode.M, "M" },
+            { KeyCode.LeftArrow, "LeftArrow" },
+            { KeyCode.RightArrow, "RightArrow" }
+        };
 
-        if (key == KeyCode.A)
+        // Sprite laden
+        if (!keySpriteMap.TryGetValue(key, out string spritePath))
         {
-            newSprite = Resources.Load<Sprite>("A");
-        }
-        else if (key == KeyCode.S)
-        {
-            newSprite = Resources.Load<Sprite>("S");
-        }
-        else if (key == KeyCode.D)
-        {
-            newSprite = Resources.Load<Sprite>("D");
-        }
-        else if (key == KeyCode.F)
-        {
-            newSprite = Resources.Load<Sprite>("F");
-        }
-        else if (key == KeyCode.G)
-        {
-            newSprite = Resources.Load<Sprite>("G");
-        }
-        else if (key == KeyCode.H)
-        {
-            newSprite = Resources.Load<Sprite>("H");
-        }
-        else if (key == KeyCode.J)
-        {
-            newSprite = Resources.Load<Sprite>("J");
-        }
-        else if (key == KeyCode.K)
-        {
-            newSprite = Resources.Load<Sprite>("K");
-        }
-        else if (key == KeyCode.L)
-        {
-            newSprite = Resources.Load<Sprite>("L");
-        }
-        else if (key == KeyCode.LeftArrow)
-        {
-            newSprite = Resources.Load<Sprite>("LeftArrow");
-        }
-        else if (key == KeyCode.RightArrow)
-        {
-            newSprite = Resources.Load<Sprite>("RightArrow");
+            Debug.LogWarning("Kein Sprite für die Taste " + key.ToString() + " gefunden.");
+            return;
         }
 
+        Sprite newSprite = Resources.Load<Sprite>(spritePath);
+
+        if (newSprite == null)
+        {
+            Debug.LogError("Sprite konnte nicht geladen werden: " + spritePath);
+            return;
+        }
+
+        // Aktuellen Button aktualisieren
         if (currentButton != null)
         {
             currentButton.GetComponent<Image>().sprite = newSprite;
@@ -148,8 +161,9 @@ public class NewBehaviourScript : MonoBehaviour
                 keyForInteract = key;
                 PlayerPrefs.SetString("InteractKey", keyForInteract.ToString());
             }
-            PlayerPrefs.Save();
 
+            // Änderungen speichern
+            PlayerPrefs.Save();
 
             Debug.Log("Taste für " + currentButton.name + " gesetzt: " + key);
             currentButton = null;
@@ -157,10 +171,9 @@ public class NewBehaviourScript : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Sprite konnte nicht geladen werden oder Button ist null.");
+            Debug.LogError("Aktueller Button ist null. Aktion nicht möglich.");
         }
     }
-
 
     public void SaveChanges()
     {

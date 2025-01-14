@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: text
   m_EditorClassIdentifier: 
   dialogue:
-  - This is my Dialogue!
-  - 'This is my second Dialogue! '
+  - "  Welcome, brave one. Are you ready \n  to risk your life for me?"
+  - "  This key will allow you to start your  \n  mission. Guard it well - it is
+    the only \n  way to move forward."
+  - "  Now, go forth and prove your \n  courage. I got high expectations of \n  you."
