@@ -33,7 +33,13 @@ public class NewBehaviourScript : MonoBehaviour
         // right now its the index File->Build Settings
         // name works also
         // sets the next level "SceneManager.GetActiveScene().buildIndex + 1"
-        SceneManager.LoadScene(1);
+        if (PlayerPrefs.HasKey("SaveRoom")) {
+            SceneManager.LoadSceneAsync(PlayerPrefs.GetString("SaveRoom"));
+            //SceneController.instance.LoadSceneByName(PlayerPrefs.GetString("SaveRoom"));
+        } else {
+            SceneManager.LoadSceneAsync("Throne Room");
+            //SceneController.instance.LoadSceneByName("Level1");
+        }
     }
 
     public void Controls(string sceneName)

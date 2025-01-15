@@ -23,6 +23,7 @@ public class SaveActivator : MonoBehaviour, IInteractable
     public void Interact(PlayerMovement player)
     {
         Debug.Log("Player interacted with the object");
+        PlayerPrefs.SetString("SaveRoom", "Save Room");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
