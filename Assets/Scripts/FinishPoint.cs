@@ -14,7 +14,7 @@ public class FinishPoint : MonoBehaviour
             if (goNextLevel)
             {
                 // go to next level
-                SceneController.instance.NextLevel();
+                //SceneController.instance.NextLevel();
             } else
             {
                 SceneController.instance.LoadSceneByName(levelName);

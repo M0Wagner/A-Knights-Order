@@ -15,7 +15,7 @@ public class BeginPoint : MonoBehaviour
             if (goNextLevel)
             {
                 // go to next level
-                SceneController.instance.previousLevel();
+                //SceneController.instance.previousLevel();
             } else 
             {
                 SceneController.instance.SetEntryPoint(SceneManager.GetActiveScene().name, exitPostion);

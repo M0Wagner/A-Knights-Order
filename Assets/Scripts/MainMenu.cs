@@ -201,7 +201,7 @@ public class NewBehaviourScript : MonoBehaviour
         if (PlayerPrefs.HasKey("MoveLeftKey"))
             buttonLeftImage = PlayerPrefs.GetString("MoveLeftKey");
             buttonLeft.GetComponent<Image>().sprite = Resources.Load<Sprite>(buttonLeftImage);
-
+        
         if (PlayerPrefs.HasKey("MoveRightKey"))
             buttonRightImage = PlayerPrefs.GetString("MoveRightKey");
             buttonRight.GetComponent<Image>().sprite = Resources.Load<Sprite>(buttonRightImage);
