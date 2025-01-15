@@ -1,10 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SaveActivator : MonoBehaviour, IInteractable
 {
     public bool isInRange;
+    public KeyCode interactKey;
+    public UnityEvent interactAction;
+
+    private void Update()
+    {
+        if (isInRange)
+        {
+            if (Input.GetKeyDown(interactKey))
+            {
+                interactAction.Invoke();
+            }
+        }
+    }
 
     public void Interact(PlayerMovement player)
     {
