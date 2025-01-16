@@ -34,17 +34,16 @@ public class enemyPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // isnt used once in script (Moritz??????????????????????)
         Vector2 point = currentPoint.position - transform.position;
 
         // change directions if enemy is at the point
         if (currentPoint == pointB.transform)
         {
-            rb.velocity = new Vector2(speed, 0);
+            rb.linearVelocity = new Vector2(speed, 0);
         }
         else
         {
-            rb.velocity = new Vector2 (-speed, 0);
+            rb.linearVelocity = new Vector2 (-speed, 0);
         }
 
         // rotate enemy to left
@@ -70,7 +69,6 @@ public class enemyPatrol : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         // check if collides with player
         if (collision.tag == "Player")
         {

@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(dashKey) && isGrounded())
                 dash(horizontalInput);
             else if (!isDashing)
-                body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+                body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocity.y);
 
             // Wall-Jump-Logik
             if (wallJumpCooldown > 0.2f && KBCounter <= 0)
@@ -123,13 +123,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded())
         {
-            body.velocity = new Vector2(body.velocity.x, jumpPower);
+            body.linearVelocity = new Vector2(body.linearVelocity.x, jumpPower);
             animator.SetTrigger("jump");
         }
         else if (isOnWall() && !isGrounded())
         {
             wallJumpCooldown = 0;
-            body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x), 18);
+            body.linearVelocity = new Vector2(-Mathf.Sign(transform.localScale.x), 18);
         }
     }
 
@@ -138,9 +138,9 @@ public class PlayerMovement : MonoBehaviour
         if (KBCounter > 0)
         {
             if (KnockFromRight)
-                body.velocity = new Vector2(-KBForce, KBForce / 2);
+                body.linearVelocity = new Vector2(-KBForce, KBForce / 2);
             else
-                body.velocity = new Vector2(KBForce, KBForce / 2);
+                body.linearVelocity = new Vector2(KBForce, KBForce / 2);
 
             KBCounter -= Time.deltaTime;
         }
@@ -151,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
         if (isOnWall())
         {
             body.gravityScale = 8;
-            body.velocity = Vector2.zero;
+            body.linearVelocity = Vector2.zero;
         }
         else
             body.gravityScale = 4f;
@@ -170,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isDashing && isGrounded())
         {
             isDashing = true;
-            body.velocity = new Vector2(horizontalInput * dashSpeed, body.velocity.y);
+            body.linearVelocity = new Vector2(horizontalInput * dashSpeed, body.linearVelocity.y);
             animator.SetTrigger("dodge");
         }
         StartCoroutine(endDash());
