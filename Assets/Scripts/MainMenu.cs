@@ -25,6 +25,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Start()
     {
+        //PlayerPrefs.DeleteAll();
         LoadControlsImages();
     }
 

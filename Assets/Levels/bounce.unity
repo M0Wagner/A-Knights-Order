@@ -1339,7 +1339,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.721369, y: 1.9439701, z: -10}
+  m_LocalPosition: {x: 3.96, y: -1.62, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3130,9 +3130,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idelMovementSpeed: 5
   idelMovementDirection: {x: -1, y: 2}
-  attackMovementSpeed: 30
+  attackMovementSpeed: 4
   attackMovementDirection: {x: -1, y: 5}
-  attackPlayerSpeed: 40
+  attackPlayerSpeed: 10
   player: {fileID: 75661405}
   dashCooldown: 5
   chargeTime: 1.5

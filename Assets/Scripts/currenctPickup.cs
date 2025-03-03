@@ -15,4 +15,7 @@ public class currenctPickup : MonoBehaviour
     {
         
     }
+
+    // jojojo wer isn er 
+    // afoch leer xD
 }

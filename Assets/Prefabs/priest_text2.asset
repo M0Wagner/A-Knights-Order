@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bc1205ee1076641a9a4fa7ad16ad1f, type: 3}
+  m_Name: priest_text2
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Ah! There you are again, Sir Knight! I know you\u2019re eager to save the kingdom,
+    but I must quickly teach you how to defend yourself. It\u2019s not all about
+    walking, you know!"
+  - "When you encounter enemies, you\u2019ll need to know how to fight back. To attack,
+    simply left-click your mouse. A quick strike will send your foes flying!"
+  - "And don\u2019t forget to dodge! If you press SHIFT, you\u2019ll perform a quick
+    roll to avoid enemy attacks. You can use this to stay one step ahead!"
+  - "I\u2019m sure you\u2019ll be just fine with this\u2026 but be careful! Some
+    enemies are quicker than you think. If you\u2019re in trouble, just remember:
+    attack, dodge, and keep moving!"
+  - "Alright, that\u2019s all for now. Off you go, brave knight\u2014there\u2019s
+    a kingdom to save!"
