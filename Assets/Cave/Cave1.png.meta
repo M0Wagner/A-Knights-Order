@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e9e234a79c770402d864442cc16fea6e
+guid: 6515c4f756ab4d84fb808a6db0ecf40a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1435731780987761860
-    second: bouce_idle1_0
+      213: 6842326670977840843
+    second: Cave1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bouce_idle1_0
+      name: Cave1_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 4
-        width: 84
-        height: 108
+        x: 6
+        y: 0
+        width: 150
+        height: 319
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4c4b38ea27ebce310800000000000000
-      internalID: 1435731780987761860
+      spriteID: bc6b0d4ead3d4fe50800000000000000
+      internalID: 6842326670977840843
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      bouce_idle1_0: 1435731780987761860
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
