@@ -18,6 +18,12 @@ public class BeginPoint : MonoBehaviour
                 //SceneController.instance.previousLevel();
             } else 
             {
+                Debug.Log(SceneManager.GetActiveScene().name);
+                Debug.Log(levelName);
+                Debug.Log(exitPostion);
+
+
+
                 SceneController.instance.SetEntryPoint(SceneManager.GetActiveScene().name, exitPostion);
                 SceneController.instance.LoadSceneByName(levelName);
             }

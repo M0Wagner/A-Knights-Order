@@ -74,48 +74,49 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         float horizontalInput = 0f;
-        
+
         if (isMovementEnabled)
         {
             if (Input.GetKey(moveLeftKey))
                 horizontalInput = -1f;
             else if (Input.GetKey(moveRightKey))
                 horizontalInput = 1f;
-        }
-
-        if (KBCounter <= 0)
-        {
-            flipCharacter(horizontalInput);
-
-            // Animator-Einstellungen
-            animator.SetBool("isRunning", horizontalInput != 0);
-            animator.SetBool("isGrounded", isGrounded());
-
-            // Dash-Logik
-            if (Input.GetKeyDown(dashKey) && isGrounded())
-                dash(horizontalInput);
-            else if (!isDashing)
-                body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocity.y);
-
-            // Wall-Jump-Logik
-            if (wallJumpCooldown > 0.2f && KBCounter <= 0)
+           
+            
+            if (KBCounter <= 0)
             {
-                handleWallJump(horizontalInput);
+                flipCharacter(horizontalInput);
+
+                // Animator-Einstellungen
+                animator.SetBool("isRunning", horizontalInput != 0);
+                animator.SetBool("isGrounded", isGrounded());
+
+                // Dash-Logik
+                if (Input.GetKeyDown(dashKey) && isGrounded())
+                    dash(horizontalInput);
+                else if (!isDashing)
+                    body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocity.y);
+
+                // Wall-Jump-Logik
+                if (wallJumpCooldown > 0.2f && KBCounter <= 0)
+                {
+                    handleWallJump(horizontalInput);
+                }
+                else
+                    wallJumpCooldown += Time.deltaTime;
+
+                // Sprung-Logik
+                if (Input.GetKey(jumpKey))
+                    Jump();
+
+                // Interaktions-Logik
+                if (Input.GetKeyDown(interactKey))
+                    Interactable?.Interact(this);
             }
             else
-                wallJumpCooldown += Time.deltaTime;
-
-            // Sprung-Logik
-            if (Input.GetKey(jumpKey))
-                Jump();
-
-            // Interaktions-Logik
-            if (Input.GetKeyDown(interactKey))
-                Interactable?.Interact(this);
-        }
-        else
-        {
-            handleKnockback(horizontalInput);
+            {
+                handleKnockback(horizontalInput);
+            }
         }
     }
 
