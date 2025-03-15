@@ -1579,7 +1579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6036550200021268582, guid: 8e230eaac1e575d478c1f0c23d0a5f68, type: 3}
       propertyPath: m_Name
-      value: Swap-ThroneRoom
+      value: Swap-Tutorial
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5272372818037421031, guid: 8e230eaac1e575d478c1f0c23d0a5f68, type: 3}
@@ -1678,7 +1678,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -2.9103827e-11, w: 1}
-  m_LocalPosition: {x: -0.45966196, y: 3.86843, z: -10}
+  m_LocalPosition: {x: -1.5545154, y: 3.8683498, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3350,7 +3350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goNextLevel: 0
-  levelName: Throne Room
+  levelName: tutoriial2
   exitPostion: {x: -7.94, y: 4.42}
 --- !u!1 &1142203751
 GameObject:

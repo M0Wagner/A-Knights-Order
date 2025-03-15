@@ -32,5 +32,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Controls.unity
     guid: 97048fb85135f0f44877c9f09d1f2801
+  - enabled: 1
+    path: Assets/Levels/tutoriial1.unity
+    guid: d49d8a5aebbc14ce2a199e2e501e44ba
+  - enabled: 1
+    path: Assets/Levels/tutoriial2.unity
+    guid: 575f725c5f5084eb08f79fa6859ea690
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

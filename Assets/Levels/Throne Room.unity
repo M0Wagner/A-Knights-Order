@@ -2535,7 +2535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goNextLevel: 0
-  levelName: Level1
+  levelName: tutoriial1
   exitPostion: {x: -7.94, y: -1.16}
 --- !u!1 &1709343333
 GameObject:
