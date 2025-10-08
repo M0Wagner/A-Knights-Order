@@ -31,23 +31,27 @@ public class PlayerAttack : MonoBehaviour
             cooldown -= Time.deltaTime;
         }
     }
-        
 
     private void Attack()
     {
         isAttacking = true;
-
-        // Play an attack animation
         animator.SetTrigger("attack");
 
-        // Detect enemies in range of attack
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        Collider2D[] hitObjects = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
-        // Damage them
-        foreach (Collider2D enemy in hitEnemies)
+        foreach (Collider2D hit in hitObjects)
         {
-            StartCoroutine(enemy.GetComponent<enemyHealth>().takeDamage(attackDamage));
-            Debug.Log("HIt");
+
+            if (hit.TryGetComponent<DestructibleBox>(out DestructibleBox box))
+            {
+                box.TakeDamage(attackDamage);
+                Debug.Log("Hit a box: " + hit.name);
+            }
+            else
+            {
+                StartCoroutine(hit.GetComponent<enemyHealth>().takeDamage(attackDamage));
+                Debug.Log("Hit an enemy: " + hit.name);
+            }
         }
     }
 

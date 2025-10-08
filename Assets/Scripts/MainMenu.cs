@@ -15,7 +15,6 @@ public class NewBehaviourScript : MonoBehaviour
 
     private GameObject currentButton = null;
     private bool waitingForInput = false;
-    PlayerMovement playerMovement;
 
     private KeyCode keyForLeft = KeyCode.None;
     private KeyCode keyForRight = KeyCode.None;
@@ -25,7 +24,6 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Start()
     {
-        //PlayerPrefs.DeleteAll();
         LoadControlsImages();
     }
 
@@ -189,6 +187,8 @@ public class NewBehaviourScript : MonoBehaviour
         PlayerPrefs.SetString("JumpKey", keyForJump.ToString());
         PlayerPrefs.SetString("DashKey", keyForDash.ToString());
         PlayerPrefs.SetString("InteractKey", keyForInteract.ToString());
+
+        Debug.Log("I'm saving stuff");
     }
 
     public void ResetToDefault()
@@ -202,20 +202,42 @@ public class NewBehaviourScript : MonoBehaviour
         buttonLeft.GetComponent<Image>().sprite = Resources.Load<Sprite>("A");
         buttonRight.GetComponent<Image>().sprite = Resources.Load<Sprite>("D");
         buttonInteract.GetComponent<Image>().sprite = Resources.Load<Sprite>("E");
+
+        PlayerPrefs.DeleteAll();
     }
 
-    public void LoadControlsImages() {
+    public void LoadControlsImages()
+    {
         if (PlayerPrefs.HasKey("MoveLeftKey"))
+        {
             buttonLeftImage = PlayerPrefs.GetString("MoveLeftKey");
             buttonLeft.GetComponent<Image>().sprite = Resources.Load<Sprite>(buttonLeftImage);
-        
+        }
+        else
+        {
+            buttonLeftImage = KeyCode.A.ToString();
+        }
+
+
         if (PlayerPrefs.HasKey("MoveRightKey"))
+        {
             buttonRightImage = PlayerPrefs.GetString("MoveRightKey");
             buttonRight.GetComponent<Image>().sprite = Resources.Load<Sprite>(buttonRightImage);
+        }
+        else
+        {
+            buttonRightImage = KeyCode.D.ToString();
+        }
 
         if (PlayerPrefs.HasKey("InteractKey"))
+        {
             buttonInteractImage = PlayerPrefs.GetString("InteractKey");
             buttonInteract.GetComponent<Image>().sprite = Resources.Load<Sprite>(buttonInteractImage);
+        }
+        else
+        {
+            buttonInteractImage = KeyCode.E.ToString();
+        }
     }
 
     public void QuitGame()

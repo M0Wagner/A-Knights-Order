@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 470316291735864345}
   - component: {fileID: 4535093014390625137}
   - component: {fileID: 2566471901406377726}
+  - component: {fileID: 5567216700371045252}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -104,6 +105,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5567216700371045252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558873440187062357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33dc5c34b32ba0c4086999960d961f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinText: {fileID: 7688173494637016986}
 --- !u!1 &4924929151968025963
 GameObject:
   m_ObjectHideFlags: 0

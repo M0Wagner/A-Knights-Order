@@ -9,6 +9,11 @@ public class Interactable : MonoBehaviour
     public KeyCode interactKey;
     public UnityEvent interactAction;
 
+    void Start()
+    {
+        LoadInteract();
+    }
+
     void Update()
     {
         if(isInRange)
@@ -32,5 +37,11 @@ public class Interactable : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
             { isInRange = false; }
+    }
+
+    public void LoadInteract()
+    {
+        if (PlayerPrefs.HasKey("InteractKey"))
+            interactKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractKey"));
     }
 }

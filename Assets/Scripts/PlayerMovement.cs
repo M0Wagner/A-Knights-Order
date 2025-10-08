@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     public float KBTotalTime;
 
     public bool KnockFromRight;
-    public int coin;
 
     private bool isDashing;
 
@@ -42,12 +42,15 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode moveRightKey = KeyCode.D;
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode dashKey = KeyCode.LeftShift;
-    public KeyCode interactKey = KeyCode.None;
+    public KeyCode interactKey = KeyCode.E;
+
+    [SerializeField] private static int extraAirJumps = 1;
+    private int airJumpsLeft = extraAirJumps;
 
     void Start()
     {
         LoadControls();
-        Debug.Log(moveLeftKey + " " +  moveRightKey + " " + interactKey);
+        Debug.Log(moveLeftKey + " " + moveRightKey + " " + interactKey);
     }
 
     private void Awake()
@@ -56,11 +59,11 @@ public class PlayerMovement : MonoBehaviour
         if (SceneController.instance != null)
         {
             Vector2 entryPoint = SceneController.instance.GetEntryPoint(currentLevel);
-            
+
             if (entryPoint != Vector2.zero)
                 transform.position = entryPoint;
         }
-    
+
 
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -81,8 +84,8 @@ public class PlayerMovement : MonoBehaviour
                 horizontalInput = -1f;
             else if (Input.GetKey(moveRightKey))
                 horizontalInput = 1f;
-           
-            
+
+
             if (KBCounter <= 0)
             {
                 flipCharacter(horizontalInput);
@@ -106,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
                     wallJumpCooldown += Time.deltaTime;
 
                 // Sprung-Logik
-                if (Input.GetKey(jumpKey))
+                if (Input.GetKeyDown(jumpKey))
                     Jump();
 
                 // Interaktions-Logik
@@ -126,6 +129,14 @@ public class PlayerMovement : MonoBehaviour
         {
             body.linearVelocity = new Vector2(body.linearVelocity.x, jumpPower);
             animator.SetTrigger("jump");
+            airJumpsLeft = extraAirJumps;
+        }
+        // Double Jump
+        else if (!isOnWall() && airJumpsLeft > 0)
+        {
+            body.linearVelocity = new Vector2(body.linearVelocity.x, jumpPower);
+            animator.SetTrigger("jump");
+            airJumpsLeft--;
         }
         else if (isOnWall() && !isGrounded())
         {
@@ -229,8 +240,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (PlayerPrefs.HasKey("InteractKey"))
             interactKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractKey"));
-
-        Debug.Log("Kontrollen geladen. InteractKey ist " + interactKey);
     }
 }
 

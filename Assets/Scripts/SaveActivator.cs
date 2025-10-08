@@ -24,6 +24,7 @@ public class SaveActivator : MonoBehaviour, IInteractable
     {
         Debug.Log("Player interacted with the object");
         PlayerPrefs.SetString("SaveRoom", "Save Room");
+        PlayerPrefs.Save();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
